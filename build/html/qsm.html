@@ -196,19 +196,35 @@ discarded as it was felt to contain little useful information).</p>
 <ol class="arabic simple" start="2">
 <li><strong>Multi coil combining &amp; phase offset correction</strong></li>
 </ol>
-<p>TBC</p>
+<p>Given that most current MRI scanners have multiple receiver coils, the data from each coil must be combined
+to form a single image. This is commonly done with sum of squares. Phase offsets can be calculated using a
+number of approaches. We have recently proposed a unique solution to this problem (POEM, under revision at MRM)
+that also allows for correct of odd and even echo offsets for bipolar gradients (another ongoing issue).</p>
 <ol class="arabic simple" start="3">
 <li><strong>Phase unwrapping</strong></li>
 </ol>
-<p>TBC</p>
+<p>The combined phase images contains data that is wrapped between -pi and pi. Large phase changes due to
+field inhomogeities outside the brain cause the phase to wrap repeatedly around the -pi to pi interval.
+This must be unwrapped. Several techniques exist to solve this problem including Laplacian methods, PRELUDE,
+path-based methods and others. We use best path, a path based method that is fast and relatively reliable.
+Best path identifies the largest homogeneous region, then traces a path through the biggest wrap and so on
+until it reaches a solution. Best path can imperfectly unwrap around the edges of the image or in regions
+of strong susceptibility so we are currently working on a method for post-processing best-path to correct this.
+Once the phase is unwrapped, phase images from multiple echos are fit with linear regression to calculate the
+total field shift for each voxel.</p>
 <ol class="arabic simple" start="4">
 <li><strong>Background phase removal</strong></li>
 </ol>
-<p>TBC</p>
+<p>Total field shift includes local susceptibility sources inside the brain, and phase changes due to
+large susceptibility sources (e.g. air) outside the brain. We are only interested in the local field
+shift so a background phase removal method is used to isolate this from the total field shift. Background
+phase removal is generally performed using a form of 3D image high pass filtering because the background
+phase tends to be slowly varying and large.</p>
 <ol class="arabic simple" start="5">
-<li><strong>Calculate the QSM value from unwrapped, phase processed data</strong></li>
+<li><strong>Calculate the QSM value from the local field shift</strong></li>
 </ol>
-<p>TBC</p>
+<p>To calculate the QSM, commonly referred to as χ (chi), it is necessary to deconvolve the local field shift
+image with a dipole kernel. <strong>TBC</strong></p>
 <p>NOTE: Thanks to Jon Cleary for writing much of this great summary.</p>
 </div>
 </div>
