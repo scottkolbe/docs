@@ -1,0 +1,265 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quantitive Susceptibility Mapping &mdash; iBRAIN Lab  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contact" href="contact.html" />
+    <link rel="prev" title="Accessing MASSIVE" href="massive.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> iBRAIN Lab
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="massive.html">Accessing MASSIVE</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quantitive Susceptibility Mapping</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#steps-and-theory">Steps and theory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">iBRAIN Lab</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Quantitive Susceptibility Mapping</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/qsm.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quantitive-susceptibility-mapping">
+<h1>Quantitive Susceptibility Mapping<a class="headerlink" href="#quantitive-susceptibility-mapping" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The goal of QSM is to recover information about the the magnetic properties of brain tissue
+(its susceptibility value). This manifests as magnetic field changes generated (primarily)
+by iron in tissue and this can be detected using certain MR imaging sequences (gradient-echo).
+The degree of field change is directly proportional to the quantity of substance in the tissues.
+This is currently useful for certain structures - particularly deep grey matter as the field here
+seems to be dominated by iron (see
+<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S105381191200537X">Langkammer C et al. NeuroImage 2012</a>
+and his infamous Figure 3) and so is likely proportional specifically to iron concentration.</p>
+<p>As you can imagine, getting at this subtle, local field information is tricky and easily contaminated
+by other factors (global imperfections in our magnet, etc.). The maths behind recovering the information
+is conceptually simple but is in fact rather difficult to implement in practice. For example there
+are lots of points in creating the map where the QSM algorithm will be trying to divide by zero.
+Thus recovering the QSM value (going from ‘field to source’) in susceptibility research is often
+referred to as an ‘ill-posed problem’.</p>
+<p>The following figure from
+<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0939388915001427?via%3Dihub">Ferdinand Schweser</a>
+illustrates the QSM problem:</p>
+<img alt="_images/qsm_summary.png" src="_images/qsm_summary.png" />
+<p><strong>The main issue with QSM is that there is currently no agreed protocol on the MRI side for acquiring QSM
+images and a multitude of software packages to do the QSM processing.</strong></p>
+</div>
+<div class="section" id="steps-and-theory">
+<h2>Steps and theory<a class="headerlink" href="#steps-and-theory" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><strong>Data Acquisition</strong></li>
+</ol>
+<p>We acquire the data using a T2* sequence in order to collect field information (this does not correct
+for the local field inhomogeneities — unlike a T2/spin-echo sequence). For MS Gait we are using a 9-echo
+bipolar multi-echo sequence as this gives us the opportunity to average QSM maps from a number of echoes
+(as opposed to the minimum of one echo) to a obtain a ‘higher-quality’ mean map.</p>
+<p>We use the phase images from the MRI scanner to eventually create the QSM map. MRI data is complex and
+has real and imaginary components. These two components are needed for the
+Fourier transform to work properly. On an Argand diagram, we can express these components geometrically.
+This allows us to calculate the actual <em>magnitude</em> image. But we can also see the phase difference (ϕ)
+between the real and imaginary components. (Until a few years ago, this phase information was usually
+discarded as it was felt to contain little useful information).</p>
+<ol class="arabic simple" start="2">
+<li><strong>Multi coil combining &amp; phase offset correction</strong></li>
+</ol>
+<p>TBC</p>
+<ol class="arabic simple" start="3">
+<li><strong>Phase unwrapping</strong></li>
+</ol>
+<p>TBC</p>
+<ol class="arabic simple" start="4">
+<li><strong>Background phase removal</strong></li>
+</ol>
+<p>TBC</p>
+<ol class="arabic simple" start="5">
+<li><strong>Calculate the QSM value from unwrapped, phase processed data</strong></li>
+</ol>
+<p>TBC</p>
+<p>NOTE: Thanks to Jon Cleary for writing much of this great summary.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="contact.html" class="btn btn-neutral float-right" title="Contact" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="massive.html" class="btn btn-neutral float-left" title="Accessing MASSIVE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Scott Kolbe
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

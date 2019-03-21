@@ -12,6 +12,7 @@ Lab Guides
    :maxdepth: 2
    
    massive
+   qsm
    contact
    license
 
