@@ -1,28 +1,18 @@
 iBRAIN Lab Documentation
 =======================================
 
-Another simple header
-^^^^^^^^^^^^^^^^^^^^^
+The iBioinformatics Research in AI and Neuroimaging (iBRAIN) lab is part of 
+the Monash Department of Neuroscience, located at the Alfred Centre. Please
+find documentation here for using lab resources. 
 
-Some text explaining stuff::
-
-    print 'hello'
-    >> hello
-
-Guide
-^^^^^
+Lab Guides
+^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 2
    
+   massive
    contact
    license
 
 
-
-Indices and tables
-^^^^^^^^^^^^^^^^^^
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
