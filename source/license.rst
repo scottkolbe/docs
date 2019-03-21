@@ -1,4 +1,4 @@
 License
 =======
 
-This is made by me for me!
+This documentation was created by Scott Kolbe (scott.kolbe[at]monash.edu).
