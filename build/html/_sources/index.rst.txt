@@ -12,6 +12,7 @@ Lab Guides
    :maxdepth: 2
    
    massive
+   diffusion
    qsm
    contact
    license
