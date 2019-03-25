@@ -25,8 +25,11 @@ illustrates the QSM problem:
 
 .. image:: ../images/qsm_summary.png
 
-**The main issue with QSM is that there is currently no agreed protocol on the MRI side for acquiring QSM 
-images and a multitude of software packages to do the QSM processing.**
+.. note::
+    The main issue with QSM is that there is currently no agreed protocol on the MRI side for acquiring QSM 
+    images and a multitude of software packages to do the QSM processing. I've only included a brief survey
+    of the available methods below. For a more exhaustive description please do an up-to-date literature
+    search. 
 
 Steps and theory
 ^^^^^^^^^^^^^^^^
@@ -74,8 +77,8 @@ phase tends to be slowly varying and large.
 
 5. **Calculate the QSM value from the local field shift**
 
-To calculate the QSM, commonly referred to as χ (chi), it is necessary to deconvolve the local field shift 
-image with a dipole kernel. **TBC** 
+To calculate the QSM, commonly referred to as χ (chi), it is necessary to deconvolve the local field shift
+image with a dipole kernel.  **TBC** 
 
 
-NOTE: Thanks to Jon Cleary for writing much of this great summary. 
+**Thanks to Jon Cleary for writing much of this great summary.** 
