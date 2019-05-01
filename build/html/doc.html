@@ -84,7 +84,10 @@
 <li class="toctree-l1"><a class="reference internal" href="massive.html">Accessing MASSIVE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diffusion.html">Advanced Diffusion MRI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qsm.html">Quantitive Susceptibility Mapping</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Adding to this documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Adding to this documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#editing-rst-files-and-building-html-pages">Editing RST files and building HTML pages</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
@@ -154,16 +157,39 @@
   <div class="section" id="adding-to-this-documentation">
 <h1>Adding to this documentation<a class="headerlink" href="#adding-to-this-documentation" title="Permalink to this headline">¶</a></h1>
 <p>This documentation is generated using Sphinx which is a document generator
-based on python. To add to this documentation you can either edit the existing
-files or make your own. Each documentation page is made using a markdown language
-called reStructuredText (.rst file). These files contain links to each other within
-them and provide an easy means to make web viewable content. Here is an
-excellent video to show you how to do it:</p>
+based on python. To add to this documentation you can edit the existing
+files and even make your own pages. The documentation pages are made
+using a markdown language called reStructuredText (.rst file <a class="reference external" href="http://docutils.sourceforge.net/rst.html">http://docutils.sourceforge.net/rst.html</a>). RST files
+make it easy to make you text look nice, add links or images.
+They also have some nice features for linking between pages.
+Here is an excellent video that shows how to get started:</p>
 <p><a class="reference external" href="https://youtu.be/oJsUvBQyHBs">https://youtu.be/oJsUvBQyHBs</a></p>
 <p>To obtain the code that this documentation is based on please speak to Scott
 to get a link to the Git repository. You can then edit the files yourself
 and commit your changes using Git, then the documentation can easily be
 rebuilt and the changes will be seen on the website.</p>
+<div class="section" id="editing-rst-files-and-building-html-pages">
+<h2>Editing RST files and building HTML pages<a class="headerlink" href="#editing-rst-files-and-building-html-pages" title="Permalink to this headline">¶</a></h2>
+<p>If you are using Mac or Linux (Windows might work with cygwin but I have no idea and have
+no intention of figuring it out) you will need to install sphinx:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install sphinx
+</pre></div>
+</div>
+<p>It’s also useful to have a good code writing environment.
+I’m using Visual Studio Code that you can download for free at <a class="reference external" href="https://code.visualstudio.com">https://code.visualstudio.com</a>.</p>
+<p>Finally, I use the Git App to clone the repository and manage my change commits:
+<a class="reference external" href="https://desktop.github.com">https://desktop.github.com</a></p>
+<p>Now you can start!</p>
+<p>Clone the repository scottkolbe/docs to your local computer. Edit the .rst files in the source directory.
+Once you are happy you can build new HTML files and view them in your web browser:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> GitHub/docs
+$ make html
+$ open bin/html/index.html
+</pre></div>
+</div>
+<p>Once you are happy with your changes you can commit the repository back to the central github repository.
+Then it’s just a case of rebuilding the documentation on ReadTheDocs. Please ask Scott to do this for now.</p>
+</div>
 </div>
 
 
