@@ -11,9 +11,11 @@ Lab Guides
 .. toctree::
    :maxdepth: 2
    
+   xnat
    massive
    diffusion
    qsm
+   doc
    contact
    license
 

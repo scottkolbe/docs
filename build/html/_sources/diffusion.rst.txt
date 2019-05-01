@@ -1,4 +1,4 @@
 Advanced Diffusion MRI
 ======================
 
-TBD
+**TBD**
