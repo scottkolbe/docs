@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -9,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; iBRAIN Lab  documentation</title>
+  <title>Lesion Segmentation Tool (LST) &mdash; iBRAIN Lab  documentation</title>
   
 
   
@@ -33,8 +32,10 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="#" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quantitive Susceptibility Mapping" href="qsm.html" />
+    <link rel="prev" title="Advanced Diffusion MRI" href="diffusion.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -78,12 +79,11 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="xnat.html">iBRAIN XNAT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="massive.html">Accessing MASSIVE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="convert.html">Data conversion for MRI analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diffusion.html">Advanced Diffusion MRI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lesion.html">Lesion Segmentation Tool (LST)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Lesion Segmentation Tool (LST)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qsm.html">Quantitive Susceptibility Mapping</a></li>
 <li class="toctree-l1"><a class="reference internal" href="doc.html">Adding to this documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
@@ -133,12 +133,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Index</li>
+      <li>Lesion Segmentation Tool (LST)</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/lesion.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -150,11 +152,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="lesion-segmentation-tool-lst">
+<h1>Lesion Segmentation Tool (LST)<a class="headerlink" href="#lesion-segmentation-tool-lst" title="Permalink to this headline">¶</a></h1>
+<p>For many pathological MRI applications it is necessary to segment out T2 hyperintense
+lesions from FLAIR scans. <a class="reference external" href="https://www.applied-statistics.de/lst.html#LST_about">LST</a>
+provides algorithms to do this automatically. LST is based on
+SPM12 and has two alorithms LGA (lesion growth algorithm) and LPA (lesion prediction algorithm).
+LGA requires a T1 and FLAIR scan. LPA is newer and requires only a FLAIR scan. This
+paper looks at both in the context of MS lesion segmentation:</p>
+<p>Egger et al. (2017). MRI FLAIR lesion segmentation in multiple sclerosis: Does automated segmentation hold up with manual annotation? NeuroImage. Clinical, 13, 264–270. <a class="reference external" href="http://doi.org/10.1016/j.nicl.2016.11.020">http://doi.org/10.1016/j.nicl.2016.11.020</a></p>
+<p>LST requires <a class="reference external" href="https://www.fil.ion.ucl.ac.uk/spm/software/spm12/">SPM12</a> within MATLAB. Please
+see download and install instructions on the relevant websites.</p>
+<p>LST has comprehensive documentation here:
+<a class="reference external" href="https://www.applied-statistics.de/LST_documentation.pdf">https://www.applied-statistics.de/LST_documentation.pdf</a></p>
 </div>
 
 
@@ -162,6 +172,15 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="qsm.html" class="btn btn-neutral float-right" title="Quantitive Susceptibility Mapping" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="diffusion.html" class="btn btn-neutral float-left" title="Advanced Diffusion MRI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

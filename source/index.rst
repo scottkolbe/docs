@@ -13,7 +13,9 @@ Lab Guides
    
    xnat
    massive
+   convert
    diffusion
+   lesion
    qsm
    doc
    contact

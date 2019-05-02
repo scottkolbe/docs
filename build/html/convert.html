@@ -1,0 +1,265 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Data conversion for MRI analysis &mdash; iBRAIN Lab  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Advanced Diffusion MRI" href="diffusion.html" />
+    <link rel="prev" title="Accessing MASSIVE" href="massive.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> iBRAIN Lab
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="xnat.html">iBRAIN XNAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="massive.html">Accessing MASSIVE</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data conversion for MRI analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#large-scale-conversion-to-nifti">Large scale conversion to nifti</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#single-image-conversion-with-mrtrix">Single image conversion with MRtrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#diffusion-mri-conversion">Diffusion MRI conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#converting-compressed-dicom">Converting compressed DICOM</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion.html">Advanced Diffusion MRI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesion.html">Lesion Segmentation Tool (LST)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qsm.html">Quantitive Susceptibility Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc.html">Adding to this documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">iBRAIN Lab</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Data conversion for MRI analysis</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/convert.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="data-conversion-for-mri-analysis">
+<h1>Data conversion for MRI analysis<a class="headerlink" href="#data-conversion-for-mri-analysis" title="Permalink to this headline">¶</a></h1>
+<p>Most MRI analysis applications do not work well with DICOM data so it is generally necessary
+to convert your data to a friendlier format such as nifti (.nii) or MRtrix format (.mif).
+Depending on what you are doing there are several ways to do this.</p>
+<div class="section" id="large-scale-conversion-to-nifti">
+<h2>Large scale conversion to nifti<a class="headerlink" href="#large-scale-conversion-to-nifti" title="Permalink to this headline">¶</a></h2>
+<p>If you have large amounts of DICOM data and want to convert it all in bulk to nifti I
+recommend using MRIConvert. This is a small gui program that can be downloaded for free
+or is available on MASSIVE using the following commands in the terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ module load mriconvert/2.0.1
+$ MRIConvert
+</pre></div>
+</div>
+<p>MRIConvert is useful because it uses DICOM header information to sort the files and name them
+with header data that can then be used to automate analysis protocols. For example, you can
+put the protocol name and study data in the file name to then use BASH commands to search
+and analyse data.</p>
+</div>
+<div class="section" id="single-image-conversion-with-mrtrix">
+<h2>Single image conversion with MRtrix<a class="headerlink" href="#single-image-conversion-with-mrtrix" title="Permalink to this headline">¶</a></h2>
+<p>MRtrix, although primarily a diffusion MRI package, has a very flexible data conversion tool that is
+available on MASSIVE:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ module load mrtrix/3XXXX
+$ mrconvert <span class="nv">$DICOM_INPUT</span> <span class="nv">$OUTPUT</span>
+</pre></div>
+</div>
+<p>mrconvert has some very flexible features such as intuitive reordering or reshaping of
+image matrix dimensions, and flexible output formats including NII and their own MIF format.</p>
+</div>
+<div class="section" id="diffusion-mri-conversion">
+<h2>Diffusion MRI conversion<a class="headerlink" href="#diffusion-mri-conversion" title="Permalink to this headline">¶</a></h2>
+<p>Diffusion MRI requires some additional thought when converting because the diffusion gradient
+vectors and b-values must also be extracted from the DICOM header. <a class="reference external" href="https://mrtrix.readthedocs.io/en/latest/reference/commands/mrconvert.html">MRCONVERT</a> from MRtrix
+does this seamlessly:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ module load mrtrix/3XXXX
+$ mrconvert <span class="nv">$DICOM_INPUT</span> <span class="nv">$MIF_OUTPUT</span>
+</pre></div>
+</div>
+<p>The MRtrix MIF format stores the gradient directions and b-values, and also stores commands
+used when manipulating the data so you can easily see what has been done to the data.</p>
+</div>
+<div class="section" id="converting-compressed-dicom">
+<h2>Converting compressed DICOM<a class="headerlink" href="#converting-compressed-dicom" title="Permalink to this headline">¶</a></h2>
+<p>DICOM supports JPEG compression for image storage but most conversion tools can’t handle
+JPEG DICOM natively. A workaround is to first decompress the DICOM files using <a class="reference external" href="https://dicom.offis.de/dcmtk.php.en">DCKTK</a>. Follow the online instructions for installing DCMTK
+then use the following command to decompress the data:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="k">for</span> img in compressed_dcmdir/*<span class="p">;</span> <span class="k">do</span> dcmdjpeg compressed_dcmdir/<span class="nv">$img</span> decompressed_dcmdir/<span class="nv">$img</span><span class="p">;</span> <span class="k">done</span>
+</pre></div>
+</div>
+<p>You should then be able to convert the decompressed data.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="diffusion.html" class="btn btn-neutral float-right" title="Advanced Diffusion MRI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="massive.html" class="btn btn-neutral float-left" title="Accessing MASSIVE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Scott Kolbe
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
